@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, AfterViewInit, ElementRef} from '@angular/core';
 
 class boardSpot {
   marked: boolean;
   marker: string;
 
-  constructor () {
+  constructor() {
     this.marked = false;
     this.marker = "blank";
   }
@@ -18,7 +18,6 @@ class boardSpot {
 })
 
 
-
 export class AppComponent implements OnInit {
   keepStreamsGoing = true;
   times = 0;
@@ -30,40 +29,33 @@ export class AppComponent implements OnInit {
   boardSpots: boardSpot[][];
 
   constructor() {
-
   }
 
   ngOnInit() {
     this.boardSpots = [];
 
-    for(let i:number = 0; i<3; i++) {
+    for (let i: number = 0; i < 3; i++) {
       this.boardSpots[i] = [];
-      for(let j:number = 0; j<3; j++) {
+      for (let j: number = 0; j < 3; j++) {
         this.boardSpots[i][j] = new boardSpot();
       }
     }
-
-    /**
-     * jQuery that implments scrolling for the #chat-messages div
-     */
-    /* Chatbox scrolling from http://stackoverflow.com/questions/20627807/jquery-chat-box-show-first-messages-at-bottom-of-div-moving-up */
-    // $('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);
   }
 
   changeIcon(player) {
     // this.currentPlayer = player;
     if (player === 'P2') {
-      for(let i:number = 0; i<3; i++) {
-        for(let j:number = 0; j<3; j++) {
-          if(!this.boardSpots[i][j].marked) {
+      for (let i: number = 0; i < 3; i++) {
+        for (let j: number = 0; j < 3; j++) {
+          if (!this.boardSpots[i][j].marked) {
             this.boardSpots[i][j].marker = "O";
           }
         }
       }
     } else {
-      for(let i:number = 0; i<3; i++) {
-        for(let j:number = 0; j<3; j++) {
-          if(!this.boardSpots[i][j].marked) {
+      for (let i: number = 0; i < 3; i++) {
+        for (let j: number = 0; j < 3; j++) {
+          if (!this.boardSpots[i][j].marked) {
             this.boardSpots[i][j].marker = "X";
           }
         }
@@ -82,8 +74,8 @@ export class AppComponent implements OnInit {
   };
 
   resetBoard() {
-    for(let i:number = 0; i<3; i++) {
-      for(let j:number = 0; j<3; j++) {
+    for (let i: number = 0; i < 3; i++) {
+      for (let j: number = 0; j < 3; j++) {
         this.boardSpots[i][j].marked = false;
         this.boardSpots[i][j].marker = "blank";
       }
@@ -215,14 +207,12 @@ export class AppComponent implements OnInit {
 
       let curr_index = xhttp.responseText.length;
 
-      console.log("Last Index: " + last_index);
-      console.log("Curr Index: " + curr_index);
       if (last_index >= curr_index) return;
 
       let gameDataFormat = /<==(.*?)==>/;
       let curr_response = xhttp.responseText.substring(last_index, curr_index);
       console.log(curr_response);
-      let match:any;
+      let match: any;
 
       while (match = gameDataFormat.exec(curr_response)) {
         // This is a valid data member comming back from the server, do stuff with it.
@@ -263,7 +253,7 @@ export class AppComponent implements OnInit {
 
 
   sendMove(row, col) {
-    if(!this.boardSpots[row][col].marked) {
+    if (!this.boardSpots[row][col].marked) {
       let sendMoveData = JSON.stringify({"name": "move", "player": this.currentPlayer, "row": row, "col": col});
       this.sendCommand("moveStream", sendMoveData);
     }
