@@ -100,33 +100,32 @@
         <input id="send" name="send" type="text" placeholder="Enter a message here...">
       </div>
     </div>
-  </div>
-
-  <!-- Sidebar -->
-  <div id="sidebar">
-    <div class="sidebar-header">Player Select</div>
-    <!-- Label solution from http://stackoverflow.com/questions/7727255/how-can-i-make-an-html-radiobutton-with-a-big-target-area -->
-    <label>
-      <div class="sidebar-item">
-        <input id="p1" name="player" type="radio" [(ngModel)]="currentPlayer" [value]="'P1'"
-               [checked]="currentPlayer == 'P1'" (click)="changeIcon('P1')">Player 1
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <div class="sidebar-header">Player Select</div>
+      <!-- Label solution from http://stackoverflow.com/questions/7727255/how-can-i-make-an-html-radiobutton-with-a-big-target-area -->
+      <label>
+        <div class="sidebar-item">
+          <input id="p1" name="player" type="radio" [(ngModel)]="currentPlayer" [value]="'P1'"
+                [checked]="currentPlayer == 'P1'" (click)="changeIcon('P1')">Player 1
+        </div>
+      </label>
+      <label>
+        <div class="sidebar-item">
+          <input id="p2" name="player" type="radio" [(ngModel)]="currentPlayer" [value]="'P2'"
+                [checked]="currentPlayer == 'P2'" (click)="changeIcon('P2')">Player 2
+        </div>
+      </label>
+      <div class="sidebar-header">Controls</div>
+      <div class="sidebar-buttons">
+        <input type="reset" value="Start Stream" (click)="startStreams()">
+        <input type="submit" value="Start Game" (click)="sendCommand('startGame', startGame())">
+        <!--<input type="submit" value="Start Game">-->
+        <input type="reset" value="Stop Stream" (click)="stopStreams()">
       </div>
-    </label>
-    <label>
-      <div class="sidebar-item">
-        <input id="p2" name="player" type="radio" [(ngModel)]="currentPlayer" [value]="'P2'"
-               [checked]="currentPlayer == 'P2'" (click)="changeIcon('P2')">Player 2
-      </div>
-    </label>
-    <div class="sidebar-header">Controls</div>
-    <div class="sidebar-buttons">
-      <input type="reset" value="Start Stream" (click)="startStreams()">
-      <input type="submit" value="Start Game" (click)="sendCommand('startGame', startGame())">
-      <!--<input type="submit" value="Start Game">-->
-      <input type="reset" value="Stop Stream" (click)="stopStreams()">
+      <div class="sidebar-header">Turn: {{playerTurn}} <span id="playerTurn"></span></div>
+      <div class="sidebar-header"><span id="victoryMsg">{{victoryMsg}}</span></div>
     </div>
-    <div class="sidebar-header">Turn: {{playerTurn}} <span id="playerTurn"></span></div>
-    <div class="sidebar-header"><span id="victoryMsg">{{victoryMsg}}</span></div>
   </div>
 
 </div>

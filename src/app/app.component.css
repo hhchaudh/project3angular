@@ -24,7 +24,7 @@
 /*** General container ***/
 #container {
   width: 100%;
-  height: calc(100% - 77px);
+  height: 100%;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -42,27 +42,27 @@
 
 /*** Header ***/
 #header {
-  width: 100%;
+  width: calc(100% - 80px);
   height: auto;
-  padding: 20px 50px;
+  padding: 20px 40px;
   margin: 0;
   position: relative;
   z-index: 1;
 
   font-size: 24pt;
   color: #FFFFFF;
-  background-color: #BF8E69;
+  background-color: #2E4C67;
 
   /* Box-shadow solution from http://stackoverflow.com/questions/9199433/cant-get-box-shadow-to-appear-above-div */
-  -webkit-box-shadow: 0px 1px 1px #23272A;
-  -moz-box-shadow: 0px 1px 1px #23272A;
-  box-shadow: 0px 1px 1px #23272A;
+  -webkit-box-shadow: 0px 1px 1px #000000;
+  -moz-box-shadow: 0px 1px 1px #000000;
+  box-shadow: 0px 1px 1px #000000;
 }
 
 /*** Main (game/chatbox) container ***/
 #main {
-  width: 80%;
-  height: 100%;
+  width: 100%;
+  height: calc(100% - 77px);
   padding: 0;
   margin: 0;
   position: relative;
@@ -74,8 +74,8 @@
   display: -webkit-flex;
   display: flex;
 
-  -webkit-flex-flow: column nowrap;
-  flex-flow: column nowrap;
+  -webkit-flex-flow: column wrap;
+  flex-flow: column wrap;
 
   color: #23272A;
   background-color: #FFFFFF;
@@ -83,8 +83,8 @@
 
 /*** Game interface ***/
 #game {
-  width: 100%;
-  height: 60%;
+  width: calc(100% - 350px);
+  height: calc(100% - 300px);
   padding: 0;
   margin: 0;
   position: relative;
@@ -98,9 +98,6 @@
 
   -webkit-flex-flow: column nowrap;
   flex-flow: column nowrap;
-
-  color: #23272A;
-  background-color: #A67B5B;
 }
 
 table#board {
@@ -196,8 +193,8 @@ table tr td:last-child {
 }
 
 #chat {
-  width: 100%;
-  height: 40%;
+  width: calc(100% - 350px);
+  height: 300px;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -210,15 +207,15 @@ table tr td:last-child {
   display: -webkit-flex;
   display: flex;
 
-  -webkit-flex-flow: column nowrap;
-  flex-flow: column nowrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
   justify-content: flex-end;
 }
 
 #chat-messages {
-  width: calc(100% - 40px);
-  height: calc(100% - 97px);
-  padding: 20px;
+  width: calc(100% - 20px);
+  height: calc(100% - 83px);
+  padding: 10px;
   margin: 0;
   overflow: auto;
 
@@ -242,47 +239,52 @@ table tr td:last-child {
   border-radius: 5px;
   border: 1px solid #DDDDDD;
   margin: 5px;
-  padding: 10px;
+  padding: 5px;
 }
 
 #chat-entrybox {
-  width: calc(100% - 40px);
+  width: calc(100% - 20px);
   height: auto;
-  padding: 20px;
+  padding: 10px;
   margin: 0;
 }
 
 /* Textbox styling from http://www.w3schools.com/css/css_form.asp */
 #chat-entrybox input[type=text] {
-  width: calc(100% - 16px);
+  width: calc(100% - 22px);
   height: auto;
-  padding: 5px;
+  padding: 10px;
   margin: 0;
 
   transition: .5s ease-in-out;
   -moz-transition: .5s ease-in-out;
   -webkit-transition: .5s ease-in-out;
 
+  color: inherit;
+  background-color: #DDDDDD;
   font-size: 12pt;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
   -webkit-border-radius: 5px;
   border-radius: 5px;
-  border: 3px solid #DDDDDD;
+  border: 1px solid #DDDDDD;
 }
 
 #chat-entrybox input[type=text]:focus {
-  border: 3px solid #99AAB5;
+  color: inherit;
+  background-color: #FFFFFF;
+  border: 1px solid #DDDDDD;
 }
 
 /*** Sidebar ***/
 #sidebar {
-  width: 20%;
+  width: 350px;
   height: 100%;
   padding: 0;
   margin: 0;
   list-style: none;
   position: relative;
+  overflow: none;
 
   display: -webkit-box;
   display: -moz-box;
@@ -294,13 +296,8 @@ table tr td:last-child {
   flex-flow: column nowrap;
   justify-content: flex-start;
 
-  color: #ACB1B5;
-  background-color: #2C2F33;
-
-  /* Box-shadow solution from http://stackoverflow.com/questions/9199433/cant-get-box-shadow-to-appear-above-div
-  -webkit-box-shadow: -2px 0px 1px #23272A;
-  -moz-box-shadow: -2px 0px 1px #23272A;
-  box-shadow: -2px 0px 1px #23272A;*/
+  color: #EEF7FF;
+  background-color: #555E66;
 }
 
 .sidebar-header {
@@ -310,33 +307,33 @@ table tr td:last-child {
   margin: 0;
   position: relative;
 
-  font-size: 24pt;
-  color: #FFFFFF;
-  background-color: inherit;
-}
+  font-size: 20pt;
 
-#sidebar label {
-  border-bottom: 1px solid rgba(172, 177, 181, 0.5);
-}
-
-#sidebar label:nth-child(3) {
-  border-bottom: 0;
+  border-bottom: 1px solid #2C2F33;
 }
 
 .sidebar-item {
   width: 100%;
-  height: auto;
-  padding: 15px 15px 15px 20px;
+  min-height: 21px;
+  padding: 20px;
   margin: 0;
   position: relative;
+  opacity: 0.6;
 
-  font-size: 16pt;
+  font-size: 14pt;
+
+  transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -webkit-transition: .5s ease-in-out;
+
+  border-bottom: 1px solid #2C2F33;
 }
 
 .sidebar-item:hover {
-  color: #FFFFFF;
-  background-color: #23272A;
   cursor: pointer;
+  opacity: 1;
+  color: inherit;
+  background-color: #3F464D;
 }
 
 .sidebar-item input[type=radio] {
@@ -346,7 +343,7 @@ table tr td:last-child {
 .sidebar-buttons {
   width: 100%;
   height: auto;
-  padding: 0;
+  padding: 0 0 20px;
   margin: 0;
   list-style: none;
 
@@ -356,47 +353,69 @@ table tr td:last-child {
   display: -webkit-flex;
   display: flex;
 
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  justify-content: center;
+  -webkit-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  border-bottom: 1px solid #2C2F33;
 }
 
 /* Button press effect from http://www.w3schools.com/css/css3_buttons.asp */
 #sidebar input[type=reset], #sidebar input[type=submit] {
-  width: 175px;
+  width: 280px;
   height: auto;
   padding: 10px;
-  margin: 15px auto;
+  margin: 20px 0 0;
 
-  font-size: 16pt;
+  transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -webkit-transition: .5s ease-in-out;
+
+  font-size: 12pt;
   font-weight: bold;
-  background-color: #FFFFFF;
+  color: #FFFFFF;
 
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
   border: 0;
-  box-shadow: 0 8px #999999;
 }
 
 #sidebar input[type=reset]:hover, #sidebar input[type=submit]:hover {
   cursor: pointer;
-  box-shadow: 0 4px #999999;
-  transform: translateY(4px);
+  color: #FFFFFF;
 }
 
 #sidebar input[type=reset]:active, #sidebar input[type=submit]:active {
-  background-color: #DDDDDD;
+  transition: .0s ease-in-out;
+  -moz-transition: .0s ease-in-out;
+  -webkit-transition: .0s ease-in-out;
+
   cursor: pointer;
-  box-shadow: 0 0 #999999;
-  transform: translateY(8px);
+  color: #FFFFFF;
 }
 
 #sidebar input[type=reset] {
-  color: #AA381E;
+  background-color: #B22626;
+}
+
+#sidebar input[type=reset]:hover {
+  background-color: #F23333;
+}
+
+#sidebar input[type=reset]:active {
+  background-color: #721919;
 }
 
 #sidebar input[type=submit] {
-  color: #556B2F;
+  background-color: #428ABE;
+}
+
+#sidebar input[type=submit]:hover {
+  background-color: #50A7E5;
+}
+
+#sidebar input[type=submit]:active {
+  background-color: #285473;
 }
 
 #playerTurn {
